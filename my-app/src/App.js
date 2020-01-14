@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-import axios from 'axios'
+import axios from 'axios';
+import UserCard from './Components/UserCard';
+import FollowersCard from './Components/FollowerCard'
 
 class App extends React.Component {
 
@@ -9,12 +11,11 @@ class App extends React.Component {
     followers: [],
   }
 
-
   componentDidMount() {
     axios.get(`https://api.github.com/users/NathanNNguyen`)
       .then(res => {
         this.setState({ infos: res.data })
-        console.log(res.data)
+        // console.log(res.data)
       })
       .catch(err => console.log(err))
 
@@ -29,19 +30,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>My Card</h1>
-        <div>
-          <p>{this.state.infos.name}</p>
-          <p>{this.state.infos.location}</p>
-          <p>{this.state.infos.bio}</p>
-          <img width="200" src={this.state.infos.avatar_url} alt='user-img' />
-        </div>
-
-        <div>
+        <h1>User</h1>
+        <UserCard infos={this.state.infos} />
+        <h2>Followers</h2>
+        <FollowersCard followers={this.state.followers} />
+          {/* <h2>Followers</h2>
           {this.state.followers.map(follower => (
-            <img width="150" src={follower.avatar_url} key={follower.id} />
+            <img width="150" src={follower.avatar_url} key={follower.id} alt='follower-img' />
           ))}
-        </div>
+        </div> */}
       </div>
     );
   }
