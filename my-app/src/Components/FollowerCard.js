@@ -39,17 +39,3 @@ export default function MediaCard(props) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-{/* <div>
-  <h2>Followers</h2>
-  {this.state.followers.map(follower => (
-    <img width="150" src={follower.avatar_url} key={follower.id} alt='follower-img' />
-  ))}
-</div> */}
